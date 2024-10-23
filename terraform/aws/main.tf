@@ -85,18 +85,3 @@ resource "aws_route_table_association" "rt_sn_vpc20_priv_To_sn_vpc20_priv" {
   route_table_id = aws_route_table.rt_sn_vpc20_priv.id
 }
 
-resource "azurerm_virtual_network_peering" "vnet10-to-vnet20" {
-  name                = "vnet10-to-vnet20"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet10.name
-  remote_virtual_network_id = azurerm_virtual_network.vnet20.id
-  allow_virtual_network_access = true
-}
-
-resource "azurerm_virtual_network_peering" "vnet20-to-vnet10" {
-  name                = "vnet20-to-vnet10"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet20.name
-  remote_virtual_network_id = azurerm_virtual_network.vnet10.id
-  allow_virtual_network_access = true
-}

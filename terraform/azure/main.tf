@@ -49,3 +49,19 @@ resource "azurerm_subnet_route_table_association" "subnet_public_association" {
   subnet_id      = azurerm_subnet.subnet-public.id
   route_table_id = azurerm_route_table.public_rt.id
 }
+
+resource "azurerm_virtual_network_peering" "vnet10-to-vnet20" {
+  name                = "vnet10-to-vnet20"
+  resource_group_name = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet10.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet20.id
+  allow_virtual_network_access = true
+}
+
+resource "azurerm_virtual_network_peering" "vnet20-to-vnet10" {
+  name                = "vnet20-to-vnet10"
+  resource_group_name = azurerm_resource_group.rg.name
+  virtual_network_name = azurerm_virtual_network.vnet20.name
+  remote_virtual_network_id = azurerm_virtual_network.vnet10.id
+  allow_virtual_network_access = true
+}
