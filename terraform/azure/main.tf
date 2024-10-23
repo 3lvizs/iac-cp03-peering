@@ -29,4 +29,5 @@ resource "azurerm_subnet" "subnet-private" {
     resource_group_name  = azurerm_resource_group.rg.name
     virtual_network_name = azurerm_virtual_network.vnet20.name
     address_prefixes     = ["20.0.1.0/24"]
+    private_endpoint_network_policies = enable
 }
