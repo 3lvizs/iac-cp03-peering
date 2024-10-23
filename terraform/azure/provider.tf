@@ -7,7 +7,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "iac-cp03-peering"
-    storage_account_name = "elvisandradetf"
+    storage_account_name = "cpstorageelvis"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
